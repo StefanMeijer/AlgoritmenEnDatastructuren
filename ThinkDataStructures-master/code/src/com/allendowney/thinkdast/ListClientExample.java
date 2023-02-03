@@ -1,5 +1,6 @@
 package com.allendowney.thinkdast;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,12 +10,12 @@ public class ListClientExample {
 
 	@SuppressWarnings("rawtypes")
 	public ListClientExample() {
-		list = new LinkedList();
+		this.list = new LinkedList<Integer>();
 	}
 
 	@SuppressWarnings("rawtypes")
 	public List getList() {
-		return list;
+		return this.list;
 	}
 
 	public static void main(String[] args) {
