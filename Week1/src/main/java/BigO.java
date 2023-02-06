@@ -51,7 +51,15 @@ public abstract class BigO {
      * Small function to return O(N^2)
      * @return
      */
-    public static int O_N_2_KWADRAAT () {
-        return 0;
+    public static int O_N_2_KWADRAAT (int x, int y) {
+        int a = 0;
+
+        for (int i = 0; i < x; i++) {
+            for (int p = 0; p < y; p++) {
+                a += (i + p);
+            }
+        }
+
+        return a;
     }
 }

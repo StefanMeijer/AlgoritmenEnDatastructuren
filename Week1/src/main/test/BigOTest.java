@@ -41,6 +41,6 @@ public class BigOTest {
     @Test
     @Order(5)
     void O_N_2_KWADRAAT() {
-        assertEquals(0, BigO.O_N_2_KWADRAAT());
+        assertEquals(2250, BigO.O_N_2_KWADRAAT(12, 15));
     }
 }
