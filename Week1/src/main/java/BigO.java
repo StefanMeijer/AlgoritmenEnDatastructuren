@@ -1,4 +1,4 @@
-public class O_1 {
+public class BigO {
     /**
      * Small function to return O(1)
      * @return
