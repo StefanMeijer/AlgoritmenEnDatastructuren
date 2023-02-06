@@ -1,10 +1,6 @@
-public class Main {
-    public static void Main(String args[])
+class Main {
+    public static void main(String args[])
     {
-        int result = calculateO1(12,15);
-    }
-
-    public static int calculateO1(int X, int Y) {
-        return X + Y;
+        System.out.println(BigO.O_N_LOG_N(60));
     }
 }

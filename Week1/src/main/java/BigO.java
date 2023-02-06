@@ -1,4 +1,4 @@
-public class BigO {
+public abstract class BigO {
     /**
      * Small function to return O(1)
      * @return
@@ -27,8 +27,18 @@ public class BigO {
      * Small function to return O(N LOG N)
      * @return
      */
-    public int O_N_LOG_N () {
-        return 0;
+    public static int O_N_LOG_N(int n) {
+
+        int x = n;
+        while ( x > 0 ) {
+            int y = n;
+            while ( y > 0 ) {
+                y = y - 1;
+            }
+            x = x / 2;
+        }
+
+        return x;
     }
 
     /**
