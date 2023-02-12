@@ -17,11 +17,13 @@ public class LinkedListAssignment
 
     Node head;
     Node tail;
+    int size;
 
     LinkedListAssignment(int[] data)
     {
         for (int integer : data)
         {
+            size++;
             add(integer);
         }
     }
@@ -45,6 +47,35 @@ public class LinkedListAssignment
                 return;
             }
             curr = curr.next;
+        }
+    }
+
+    void remove (int index) {
+        //Check if given index is inside scope of list
+        if (index <= this.size) {
+            //Curr & prev
+            Node curr = this.head;
+            Node prev = this.tail;
+
+            //Loop over the size of list
+            for (int i = 0; i < this.size; i++) {
+
+                //Check if loop is not going out of boundaries
+                if (curr.next != null) { //Maybe unnecessarily
+
+                    //If given index is same as loop index
+                    if (i == index) {
+                        this.head = curr.next.next; //Set head to next, next
+                        this.tail = curr.next; //Set tail to next
+                        curr = null; //set node to null
+                        this.size--; //Decrease size list with -1
+                        return; //Close the loop
+                    } else {
+                        prev = curr; //Set previous to current
+                        curr = head.next; //Set curr to next
+                    }
+                }
+            }
         }
     }
 }
