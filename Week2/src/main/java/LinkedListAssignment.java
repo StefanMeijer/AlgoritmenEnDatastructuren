@@ -78,4 +78,21 @@ public class LinkedListAssignment
             }
         }
     }
+
+    void insertAfter(int data) {
+        if(this.tail == null) {
+            return;
+        }
+
+        Node curr = new Node(data, null);
+
+        while(true) {
+
+            if(curr.next == null) {
+                curr.next = this.tail.next;
+                this.tail.next = curr;
+                return;
+            }
+        }
+    }
 }
