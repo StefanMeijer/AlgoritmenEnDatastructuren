@@ -80,19 +80,25 @@ public class LinkedListAssignment
     }
 
     void insertAfter(int data) {
-        if(this.tail == null) {
+
+        Node curr = this.head;
+        Node prev = this.tail;
+
+        if (prev == null) {
             return;
         }
 
-        Node curr = new Node(data, null);
+        Node tmp = new Node(data, null);
 
-        while(true) {
+        while (true) {
 
-            if(curr.next == null) {
-                curr.next = this.tail.next;
-                this.tail.next = curr;
+            if (tmp.next == null) {
+                tmp.next = prev.next;
+                prev.next = tmp;
                 return;
             }
+
+            curr = prev.next;
         }
     }
 }
