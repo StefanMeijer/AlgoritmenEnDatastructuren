@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="NickAnD" />
+        <module name="Week1" />
+        <module name="BinarySearchTree" />
+        <module name="Week2" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="BinarySearchTree" target="19" />
+      <module name="NickAnD" target="19" />
+      <module name="Week1" target="19" />
+      <module name="Week2" target="19" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
