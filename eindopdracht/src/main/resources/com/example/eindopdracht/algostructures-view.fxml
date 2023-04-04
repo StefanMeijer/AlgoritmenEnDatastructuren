@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="591.0" prefWidth="970.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.example.eindopdracht.AlgoStructuresController">
+<VBox alignment="CENTER" prefHeight="591.0" prefWidth="970.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eindopdracht.AlgoStructuresController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -97,7 +97,12 @@
              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
+            <children>
+               <Button mnemonicParsing="false" text="Push Persons" onAction="#pushPeople" />
+            </children>
          </GridPane>
          <GridPane GridPane.rowIndex="2">
            <columnConstraints>
@@ -168,6 +173,9 @@
              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
+            <children>
+               <Button mnemonicParsing="false" text="Linearsearch" GridPane.columnIndex="1" onAction="#showValue" />
+            </children>
          </GridPane>
          <GridPane GridPane.columnIndex="2" GridPane.rowIndex="7">
            <columnConstraints>

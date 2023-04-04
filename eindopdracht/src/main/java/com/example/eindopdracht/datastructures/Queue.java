@@ -55,4 +55,8 @@ public class Queue<T> {
     public boolean isFull() {
         return (size == capacity);
     }
+
+    public int size() {
+        return size;
+    }
 }
