@@ -16,14 +16,13 @@ import java.util.ArrayList;
 
 public class AlgoStructuresController {
     private Stack<Person> stack;
-    Queue<Person> personQueue = new Queue<>(3);
-    
+    Queue<Person> personQueue;
     @FXML
     public Label stackLabel;
 
-
     public AlgoStructuresController() {
         this.stack = new Stack<>(); //Create new stack
+        this.personQueue = new Queue<>(3);
     }
 
     /**
@@ -111,13 +110,12 @@ public class AlgoStructuresController {
             stackLabel.setText("Stack is empty!");
         }
     }
-    
+
     public void pushPeople() {
         personQueue.enqueue(new Person("andrew", 25));
         personQueue.enqueue(new Person("tate", 30));
         personQueue.enqueue(new Person("tristan", 35));
     }
-
 
     public void showValue() {
         LinearSearch mySearch = new LinearSearch();
