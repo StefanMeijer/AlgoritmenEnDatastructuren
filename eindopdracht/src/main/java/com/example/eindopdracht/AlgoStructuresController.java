@@ -38,7 +38,6 @@ public class AlgoStructuresController {
         System.out.println();
     }
 
-
     /**
      * Function to print the peek of the stack
      */
@@ -52,7 +51,7 @@ public class AlgoStructuresController {
      * Function to add person objects to stack
      */
     @FXML
-    protected void addPersonsToStack() throws Exception {
+    protected void addPersonsToStack() {
         if (!this.stack.getStack().isEmpty()) {
             this.stack.empty();
         }
