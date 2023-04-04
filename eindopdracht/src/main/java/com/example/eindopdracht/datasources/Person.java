@@ -9,15 +9,13 @@ public class Person implements Comparable<Person> {
         this.age = age;
     }
 
-    @Override
-    public int compareTo(Person otherPerson) {
-        // Sorteren op leeftijd
-        return Integer.compare(this.getAge(), otherPerson.age);
+    public String info() {
+        return "Name: " + this.getName() + " | Age: " + this.getAge() + "";
     }
 
     @Override
-    public String toString() {
-        return this.getName() + " (" + this.getAge() + ")";
+    public int compareTo(Person otherPerson) {
+        return Integer.compare(this.getAge(), otherPerson.age); //Will sort by age
     }
 
     public String getName() {

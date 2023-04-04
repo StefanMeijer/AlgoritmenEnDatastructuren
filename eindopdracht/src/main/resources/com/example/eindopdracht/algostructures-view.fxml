@@ -59,7 +59,7 @@
                <Font name="System Bold" size="15.0" />
             </font>
          </Label>
-         <Label text="Output" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+         <Label fx:id="stackLabel" text="Output" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
          <Label text="Output" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
          <Label text="Output" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
          <Label text="Output" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" />
@@ -84,8 +84,10 @@
              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
             <children>
-               <Button mnemonicParsing="false" text="Pop" GridPane.rowIndex="2" />
-               <Button mnemonicParsing="false" text="Push Persons" />
+               <Button mnemonicParsing="false" onAction="#popStack" text="Pop" GridPane.rowIndex="2" />
+               <Button mnemonicParsing="false" onAction="#addPersonsToStack" text="Import dataset" />
+               <Button mnemonicParsing="false" onAction="#peekStack" text="Peek" GridPane.columnIndex="1" />
+               <Button mnemonicParsing="false" onAction="#printStack" text="Print" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             </children>
          </GridPane>
          <GridPane GridPane.rowIndex="9">
@@ -160,7 +162,7 @@
                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
            </rowConstraints>
             <children>
-               <Button mnemonicParsing="false" text="Bubblesort" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+               <Button mnemonicParsing="false" onAction="#bubbleSortStack" text="Bubblesort" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
             </children>
          </GridPane>
          <GridPane GridPane.columnIndex="2" GridPane.rowIndex="9">
