@@ -5,21 +5,30 @@ import com.example.eindopdracht.datasources.Person;
 import com.example.eindopdracht.datastructures.Stack;
 
 import com.example.eindopdracht.algoritmes.search.LinearSearch;
-import com.example.eindopdracht.datasources.Person;
 import com.example.eindopdracht.datastructures.Queue;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AlgoStructuresController {
     private Stack<Person> stack;
     Queue<Person> personQueue;
     @FXML
     public Label stackLabel;
-
+    @FXML
+    public Button pushButton, peekButton, popButton, printButton, bubblesortButton;
+    @FXML
+    private void initialize() {
+        this.peekButton.setDisable(true);
+        this.popButton.setDisable(true);
+        this.printButton.setDisable(true);
+        this.bubblesortButton.setDisable(true);
+    }
     public AlgoStructuresController() {
         this.stack = new Stack<>(); //Create new stack
         this.personQueue = new Queue<>(3);
@@ -31,11 +40,15 @@ public class AlgoStructuresController {
      */
     @FXML
     protected void printStack () {
-        for (int i = this.stack.getStack().size() - 1; i >= 0; i--) {
-            System.out.println(this.stack.getStack().get(i).info());
+        Object[] objects = this.stack.getStack();
+        Person[] people = Arrays.copyOf(objects, this.stack.size(), Person[].class);
+
+        String labelText = "";
+        for (Person person : people) {
+            labelText += person.info() + "\n";
         }
 
-        System.out.println();
+        stackLabel.setText(labelText);
     }
 
     /**
@@ -43,8 +56,7 @@ public class AlgoStructuresController {
      */
     @FXML
     protected void peekStack () {
-        System.out.println(this.stack.peek().info());
-        System.out.println();
+        stackLabel.setText(this.stack.peek().info());
     }
 
     /**
@@ -52,12 +64,14 @@ public class AlgoStructuresController {
      */
     @FXML
     protected void addPersonsToStack() {
-        if (!this.stack.getStack().isEmpty()) {
-            this.stack.empty();
-        }
+        pushButton.setDisable(true);
+        this.peekButton.setDisable(false);
+        this.popButton.setDisable(false);
+        this.printButton.setDisable(false);
+        this.bubblesortButton.setDisable(false);
 
         //Push dataset
-        stack.push(new Person("Stefan", 20));
+        stack.push(new Person("Stefan", 70));
         stack.push(new Person("Robin", 80));
         stack.push(new Person("Nick", 40));
         stack.push(new Person("Hajo", 60));
@@ -71,7 +85,7 @@ public class AlgoStructuresController {
      */
     @FXML
     protected void popStack() {
-        if (!this.stack.getStack().isEmpty()) {
+        if (!this.stack.isEmpty()) {
             this.stack.pop();
 
             //Print the stack to screen
@@ -86,8 +100,9 @@ public class AlgoStructuresController {
      */
     @FXML
     protected void bubbleSortStack () {
-        if (!this.stack.getStack().isEmpty()) {
-            Person[] array = new Person[stack.getStack().size()]; //Creates new array with length of total objects in stack - uses ArrayList.size() because stack size has -1
+        if (!this.stack.isEmpty()) {
+            //Currently only works with person, because FXML doesn't allow generic types...
+            Person[] array = new Person[stack.size()]; //Creates new array with length of total objects in stack
 
             //Add stack objects to array
             for (int i = 0; i < array.length; i++) {
@@ -99,8 +114,8 @@ public class AlgoStructuresController {
             BubbleSort.sort(array);
 
             //Add objects back to stack
-            for (int i = 0; i < array.length; i++) {
-                stack.push(array[i]);
+            for (Person person : array) {
+                stack.push(person);
             }
 
             //Print the stack to screen

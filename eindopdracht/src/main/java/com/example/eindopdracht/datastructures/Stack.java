@@ -1,21 +1,20 @@
 package com.example.eindopdracht.datastructures;
 
-import java.util.ArrayList;
-
 public class Stack<T> {
-    private ArrayList<T> stack;
+    private T[] stack;
+    private int top;
 
     public Stack() {
-        this.stack = new ArrayList<T>();
+        this.stack = (T[]) new Object[1000]; //max 1000 objects
+        this.top = 0;
     }
 
     /**
      * Returns the size of the stack
-     * Uses size of ArrayList minus 1. This due to ArrayList.size() counts from 1 instead of 0
      * @return integer
      */
     public int size() {
-        return this.stack.size() - 1;
+        return this.top;
     }
 
     /**
@@ -23,7 +22,7 @@ public class Stack<T> {
      * @return object
      */
     public T peek() {
-        return this.stack.get(this.size()); //Get last element on ArrayList
+        return stack[top - 1]; //Returns stack top-1 because arraylist counts from 0, and top begins at 1
     }
 
     /**
@@ -31,27 +30,49 @@ public class Stack<T> {
      * @param object object
      */
     public void push(T object) {
-        this.stack.add(object); //Add object to top
+        stack[top++] = object; //Sets top +1 object
     }
 
     /**
      * Remove(pop) the last object added to stack
      */
     public void pop() {
-        this.stack.remove(this.size()); //Removes top object
+        stack[top] = null; //set stack data of top to null
+        top--; //Reduce top by -1
     }
 
     /**
      * Function to empty the stack
      */
     public void empty () {
-        this.stack.clear();
+        this.stack = null;
+        this.top = 0;
     }
 
     /**
-     * @return Arraylist of all objects in stack
+     * Function to check if the stack is empty
+     * @return
      */
-    public ArrayList<T> getStack() {
-        return this.stack;
+    public boolean isEmpty() {
+        return top == 0;
+    }
+
+    /**
+     * Getters/setters
+     */
+    public T[] getStack() {
+        return stack;
+    }
+
+    public void setStack(T[] stack) {
+        this.stack = stack;
+    }
+
+    public int getTop() {
+        return top;
+    }
+
+    public void setTop(int top) {
+        this.top = top;
     }
 }
