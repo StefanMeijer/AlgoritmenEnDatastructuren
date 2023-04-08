@@ -6,13 +6,13 @@ public class Queue<T> {
     private int rear;
     private int size;
     private int capacity;
-    private T[] array;
+    private T[] queue;
 
     public Queue(int capacity) {
         this.capacity = capacity;
         front = size = 0;
         rear = capacity - 1;
-        array = (T[]) new Object[this.capacity];
+        queue = (T[]) new Object[this.capacity];
     }
 
     public void enqueue(T item) {
@@ -20,7 +20,7 @@ public class Queue<T> {
             return;
         }
         rear = (rear + 1) % capacity;
-        array[rear] = item;
+        queue[rear] = item;
         size++;
     }
 
@@ -28,7 +28,7 @@ public class Queue<T> {
         if (isEmpty()) {
             return null;
         }
-        T item = array[front];
+        T item = queue[front];
         front = (front + 1) % capacity;
         size--;
         return item;
@@ -38,14 +38,14 @@ public class Queue<T> {
         if (isEmpty()) {
             return null;
         }
-        return array[front];
+        return queue[front];
     }
 
     public T rear() {
         if (isEmpty()) {
             return null;
         }
-        return array[rear];
+        return queue[rear];
     }
 
     public boolean isEmpty() {
@@ -58,5 +58,9 @@ public class Queue<T> {
 
     public int size() {
         return size;
+    }
+
+    public T[] getQueue() {
+        return queue;
     }
 }

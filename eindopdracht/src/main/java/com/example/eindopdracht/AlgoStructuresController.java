@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import java.util.Arrays;
 
 public class AlgoStructuresController {
+    public Label linearOutput;
     private Stack<Person> stack;
     Queue<Person> personQueue;
     @FXML
@@ -125,15 +126,35 @@ public class AlgoStructuresController {
         }
     }
 
-    public void pushPeople() {
+    protected void printQueue() {
+        Object[] objects = this.personQueue.getQueue();
+        Person[] people = Arrays.copyOf(objects, this.personQueue.size(), Person[].class);
+
+        String labelText = "";
+        for (Person person : people) {
+            labelText += person.info() + "\n";
+        }
+
+        linearOutput.setText(labelText);
+    }
+
+    public void pushQueue() {
         personQueue.enqueue(new Person("andrew", 25));
         personQueue.enqueue(new Person("tate", 30));
         personQueue.enqueue(new Person("tristan", 35));
+
+        printQueue();
     }
 
-    public void showValue() {
+    public void linearSearchFront() {
         LinearSearch mySearch = new LinearSearch();
 
-        System.out.println(mySearch.linearSearch(personQueue, personQueue.size(), personQueue.front()));
+        linearOutput.setText(mySearch.linearSearch(personQueue, personQueue.size(), personQueue.front()).info());
+    }
+
+    public void linearSearchRear() {
+        LinearSearch mySearch = new LinearSearch();
+
+        linearOutput.setText(mySearch.linearSearch(personQueue, personQueue.size(), personQueue.rear()).info());
     }
 }
