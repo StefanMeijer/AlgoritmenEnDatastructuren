@@ -1,19 +1,23 @@
 package com.example.eindopdracht;
 
+import com.example.eindopdracht.algoritmes.search.BinarySearch;
 import com.example.eindopdracht.algoritmes.sort.BubbleSort;
+import com.example.eindopdracht.algoritmes.sort.MergeSort;
 import com.example.eindopdracht.datasources.Person;
+import com.example.eindopdracht.datastructures.LinkedList.LinkedList;
 import com.example.eindopdracht.datastructures.Stack;
 
 import com.example.eindopdracht.algoritmes.search.LinearSearch;
 import com.example.eindopdracht.datastructures.Queue;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+
 
 public class AlgoStructuresController {
     public Label linearOutput;
@@ -23,6 +27,16 @@ public class AlgoStructuresController {
     public Label stackLabel;
     @FXML
     public Button pushButton, peekButton, popButton, printButton, bubblesortButton;
+
+    @FXML
+    private TextField searchValue;
+
+    @FXML
+    private Label linkedListOutput;
+
+    private LinkedList<Integer> linkedList;
+
+
     @FXML
     private void initialize() {
         this.peekButton.setDisable(true);
@@ -33,6 +47,7 @@ public class AlgoStructuresController {
     public AlgoStructuresController() {
         this.stack = new Stack<>(); //Create new stack
         this.personQueue = new Queue<>(3);
+        this.linkedList = new LinkedList<>();
     }
 
     /**
@@ -156,5 +171,94 @@ public class AlgoStructuresController {
         LinearSearch mySearch = new LinearSearch();
 
         linearOutput.setText(mySearch.linearSearch(personQueue, personQueue.size(), personQueue.rear()).info());
+    }
+
+    @FXML
+    public void initLinkedList()
+    {
+        linkedList.insert(72);
+        linkedList.insert(18);
+        linkedList.insert(39);
+        linkedList.insert(94);
+        linkedList.insert(51);
+        linkedList.insert(73);
+        linkedList.insert(21);
+        linkedList.insert(78);
+        linkedList.insert(9);
+        linkedList.insert(60);
+        linkedList.insert(27);
+        linkedList.insert(48);
+        linkedList.insert(11);
+        linkedList.insert(20);
+        linkedList.insert(58);
+        linkedList.insert(6);
+        linkedList.insert(20);
+        linkedList.insert(71);
+        linkedList.insert(94);
+        linkedList.insert(22);
+        linkedList.insert(19);
+        linkedList.insert(98);
+        linkedList.insert(39);
+        linkedList.insert(95);
+        linkedList.insert(39);
+        linkedList.insert(49);
+        linkedList.insert(60);
+        linkedList.insert(89);
+        linkedList.insert(86);
+        linkedList.insert(43);
+        linkedList.insert(57);
+        linkedList.insert(53);
+        linkedList.insert(28);
+        linkedList.insert(43);
+        linkedList.insert(10);
+        linkedList.insert(1);
+        linkedList.insert(76);
+        linkedList.insert(87);
+        linkedList.insert(16);
+        linkedList.insert(2);
+        linkedList.insert(81);
+        linkedList.insert(33);
+        linkedList.insert(56);
+        linkedList.insert(97);
+        linkedList.insert(26);
+        linkedList.insert(29);
+        linkedList.insert(82);
+        linkedList.insert(92);
+        linkedList.insert(84);
+    }
+
+    @FXML
+    public void printLinkedList()
+    {
+        String output = null;
+        ArrayList list = linkedList.displayableView();
+        for (int i = 0; i < list.size(); i++) {
+            if (i == 0)
+                output = list.get(i).toString();
+            else
+                output+=", "+list.get(i).toString();
+        }
+        linkedListOutput.setText(output);
+    }
+
+    @FXML
+    public void sortLinkedList()
+    {
+        LinkedList local = this.linkedList;
+        MergeSort mergeSort = new MergeSort();
+        local = mergeSort.mergeSort(local);
+        this.linkedList = local;
+    }
+
+    @FXML
+    public void searchLinkedList()
+    {
+        int key = Integer.parseInt(this.searchValue.getText());
+        BinarySearch binarySearch = new BinarySearch();
+        int response = binarySearch.search(linkedList, key);
+        if (response >= 0)
+            linkedListOutput.setText("Key is at position: "+response);
+        else
+            linkedListOutput.setText("Key is not present in dataset");
     }
 }
