@@ -22,7 +22,7 @@ public class Stack<T> {
      * @return object
      */
     public T peek() {
-        return stack[top - 1]; //Returns stack top-1 because arraylist counts from 0, and top begins at 1
+        return stack[top - 1]; //Returns stack top -1 because array counts from 0, and top begins at 1
     }
 
     /**
@@ -51,7 +51,7 @@ public class Stack<T> {
 
     /**
      * Function to check if the stack is empty
-     * @return
+     * @return boolean
      */
     public boolean isEmpty() {
         return top == 0;
